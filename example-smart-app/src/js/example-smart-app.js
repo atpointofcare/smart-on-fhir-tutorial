@@ -35,6 +35,7 @@
           if (typeof patient.name[0] !== 'undefined') {
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
+            contact = patient.telecom[0].value;
           }
 
           var height = byCodes('8302-2');
@@ -46,7 +47,7 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
-          p.contact = patient.telecom[0];
+          p.contact = contact;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
@@ -130,6 +131,7 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    
     alert(p.contact);
   };
 
