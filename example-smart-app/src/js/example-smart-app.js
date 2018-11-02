@@ -28,6 +28,7 @@
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
 
+          var email = '';
           var fname = '';
           var lname = '';
 
@@ -45,6 +46,7 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
+          p.email = email;
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
@@ -74,6 +76,7 @@
 
   function defaultPatient(){
     return {
+      email: {value:''},
       fname: {value: ''},
       lname: {value: ''},
       gender: {value: ''},
@@ -117,6 +120,7 @@
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
+    $('#email').html(p.email);
     $('#fname').html(p.fname);
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
