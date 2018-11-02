@@ -33,7 +33,6 @@
           var lname = '';
 
           if (typeof patient.name[0] !== 'undefined') {
-            contact = patient.telecom[0];
             fname = patient.name[0].given.join(' ');
             lname = patient.name[0].family.join(' ');
           }
@@ -47,7 +46,7 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = gender;
-          p.contact = contact;
+          p.contact = patient.telecom[0];
           p.fname = fname;
           p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
