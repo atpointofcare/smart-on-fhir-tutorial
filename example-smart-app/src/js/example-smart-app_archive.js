@@ -31,29 +31,23 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-
-
-          // DATA
-
-
-          var ehr_patient_id = patient.id;
-          var patient_email = 'No Email';
-          var first_name = '';
-          var last_name = '';
           var gender = patient.gender;
-          var dob = patient.birthDate;
-          var zipcode = patient.address[0].postalCode;
+
+          var contact = 'No Email';
+          var fname = '';
+          var lname = '';
 
           if (typeof patient.name[0] !== 'undefined') {
-            first_name = patient.name[0].given.join(' ');
-            last_name = patient.name[0].family.join(' ');
+            fname = patient.name[0].given.join(' ');
+            lname = patient.name[0].family.join(' ');
+
 
             var telecomLength = patient.telecom.length;
 
             for (var i = 0; i < telecomLength; i++){
 
               if (patient.telecom[i].system == "email"){
-                patient_email = patient.telecom[i].value;
+                contact = patient.telecom[i].value;
               }
             }
           }
@@ -65,18 +59,11 @@
           var ldl = byCodes('2089-1');
 
           var p = defaultPatient();
-
-          p.ehr_patient_id = ehr_patient_id;
-          p.patient_email = patient_email;
-          p.first_name = first_name;
-          p.last_name = last_name;
+          p.birthdate = patient.birthDate;
           p.gender = gender;
-          p.dob = dob;
-          p.zipcode = zipcode;
-
-        console.log(p);
-
-
+          p.contact = contact;
+          p.fname = fname;
+          p.lname = lname;
           p.height = getQuantityValueAndUnit(height[0]);
 
           if (typeof systolicbp != 'undefined')  {
@@ -104,13 +91,11 @@
 
   function defaultPatient(){
     return {
-      ehr_patient_id: {value:''},
-      patient_email: {value:''},
-      first_name: {value: ''},
-      last_name: {value: ''},
+      contact: {value:''},
+      fname: {value: ''},
+      lname: {value: ''},
       gender: {value: ''},
-      dob: {value: ''},
-      zipcode: {value: ''},
+      birthdate: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''},
@@ -147,17 +132,14 @@
     }
   }
 
-
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
-    $('#ehr_patient_id').html(p.ehr_patient_id);
-    $('#patient_email').html(p.patient_email);
-    $('#first_name').html(p.first_name);
-    $('#last_name').html(p.last_name);
+    $('#email').html(p.contact);
+    $('#fname').html(p.fname);
+    $('#lname').html(p.lname);
     $('#gender').html(p.gender);
-    $('#dob').html(p.dob);
-    $('#zipcode').html(p.zipcode);
+    $('#birthdate').html(p.birthdate);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);

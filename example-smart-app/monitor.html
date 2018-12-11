@@ -13,10 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui"/>
 
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js" integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB" crossorigin="anonymous"></script>
-	<link href="./src/css/example-smart-app.css" rel="stylesheet">
 	<link href="./src/css/main.css" rel="stylesheet">
 </head>
-<body data-cerner-view="order">
+<body data-cerner-view="monitor">
 
 <div id='errors'>
 </div>
@@ -33,7 +32,7 @@
 			</header>
 			<div class="cerner-sidebar_content">
 				<ul class="accordion-list">
-					<li id="accordionOrder" class="accordion active">
+					<li id="accordionOrder" class="accordion">
 						<a href="index.html" class="accordion-trigger">
 							Order
 							<span class="accordion-trigger_btn"><span class="fa fa-chevron-right"></span></span>
@@ -41,20 +40,12 @@
 						<div class="accordion-body">
 						</div>
 					</li>
-					<li id="accordionMonitor" class="accordion">
+					<li id="accordionMonitor" class="accordion active">
 						<a href="monitor.html" class="accordion-trigger">
 							Monitor
 							<span class="accordion-trigger_btn"><span class="fa fa-chevron-right"></span></span>
 						</a>
 						<div class="accordion-body">
-							<div class="accordion-content cerner-features">
-								<img src="" class="cerner-features_banner" alt="">
-								<ul class="cerner-features_list">
-									<li><a href="#">Lorem ipsum</a></li>
-									<li><a href="#">Lorem ipsum</a></li>
-									<li><a href="#">Lorem ipsum</a></li>
-								</ul>
-							</div>
 						</div>
 					</li>
 				</ul>
@@ -64,17 +55,9 @@
 			<header class="cerner-main_header">
 				<ul id="cernerProfile" class="cerner-profile_list">
 				</ul>
-				<!--
-				<button class="cerner-button_add">
-					<span class="fas fa-plus-circle"></span>
-					Add Patient
-				</button>
-				-->
 			</header>
 			<div class="cerner-main_content">
-				<section class="cerner-catalog">
-					<ul id="cernerAppList" class="cerner-catalog_section cerner-catalog_list">
-					</ul>
+				<section id="cernerCharts" class="cerner-charts">
 				</section>
 			</div>
 		</main>
